@@ -5,7 +5,8 @@ end
 module GhRepoStats
   class << self
     def stats(options)
-
+      results = Retriever.retrieve_with options
+      Reporter.report(results)
     end
   end
 end
