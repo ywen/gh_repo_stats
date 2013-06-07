@@ -13,11 +13,7 @@ Gem::Specification.new do |gem|
   gem.name          = "gh_repo_stats"
   gem.require_paths = ["lib"]
   gem.version       = "0.0.1"
+  gem.add_runtime_dependency(%q<thor>)
   gem.add_development_dependency(%q<rspec>)
   gem.add_development_dependency(%q<rake>)
-  gem.add_development_dependency(%q<guard-spork>)
-  gem.add_development_dependency(%q<guard-rspec>)
-  gem.add_development_dependency(%q<cane>)
-  gem.add_development_dependency(%q<simplecov>)
-  gem.add_development_dependency(%q<growl-rspec>)
 end
