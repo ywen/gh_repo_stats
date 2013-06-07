@@ -1,24 +1,10 @@
-require 'simplecov'
-SimpleCov.start do
-  SimpleCov.refuse_coverage_drop
-  SimpleCov.minimum_coverage 100
-end
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+require "#{File.dirname(__FILE__)}/../lib/gh_repo_stats"
 
-require 'spork'
-require 'guard/spork'
+RSpec.configure do |config|
+  config.mock_with :rspec
 
-Spork.prefork do
-  require 'rspec/core'
-  Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
-  require "#{File.dirname(__FILE__)}/../lib/gh_repo_stats"
-
-  RSpec.configure do |config|
-    config.mock_with :rspec
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
   end
 end
-
-Spork.each_run do
-  load "#{File.dirname(__FILE__)}/../lib/gh_repo_stats.rb"
-  Dir["#{File.dirname(__FILE__)}/../lib/gh_repo_stats/*.rb"].each {|f| load f}
-end
-

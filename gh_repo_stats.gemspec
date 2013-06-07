@@ -3,8 +3,8 @@
 Gem::Specification.new do |gem|
   gem.authors       = ["Yi Wen"]
   gem.email         = ["ywen.github@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{To get github stats}
+  gem.summary       = %q{To get github stats. see gh_repo_stats help for more details}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)

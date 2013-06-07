@@ -1,3 +1,15 @@
 #!/usr/bin/env ruby
 
-require 'gh_repo_stats'
+require_relative '../lib/gh_repo_stats'
+require 'thor'
+
+class GhRepoStatsBin < Thor
+  desc "get", "Get github repo stats info"
+  option :after
+  def stats
+    GhRepoStats.stats(options)
+  end
+  default_task :stats
+end
+
+GhRepoStatsBin.start(ARGV)
