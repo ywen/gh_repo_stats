@@ -1,11 +1,9 @@
 module GhRepoStats
   class Reporter
-    def initialize(results)
+    class << self
+      def report(results)
 
-    end
-
-    def output
-
+      end
     end
   end
 end
