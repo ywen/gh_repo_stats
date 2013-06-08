@@ -1,9 +1,8 @@
 module GhRepoStats
-  class Retriever
+  class EventLoader
     class << self
-      def retrieve_with(options)
+      def load(event_type, before, after)
       end
     end
-
   end
 end

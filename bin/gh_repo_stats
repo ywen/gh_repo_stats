@@ -4,8 +4,9 @@ require_relative '../lib/gh_repo_stats'
 require 'thor'
 
 class GhRepoStatsBin < Thor
-  desc "get", "Get github repo stats info"
-  option :after
+  desc "stats", "Get github repo stats info"
+  option :after, desc: "All activities should occur after the DATETIME"
+
   def stats
     GhRepoStats.stats(options)
   end
