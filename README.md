@@ -1,6 +1,9 @@
 # GhRepoStats
 
-TODO: Write a gem description
+GH Stats
+
+[![Build Status](https://secure.travis-ci.org/ywen/gh_repo_stats.png)](http://travis-ci.org/ywen/gh_repo_stats)
+[![Code Quality](https://codeclimate.com/badge.png)](https://codeclimate.com/github/ywen/gh_repo_stats)
 
 ## Installation
 
