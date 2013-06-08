@@ -82,8 +82,9 @@ module GhRepoStats
 
     describe ".load" do
       let(:result) { described_class.load event_type, time_frame }
+
       before(:each) do
-        Octokit.stub(:public_events).and_return raw_response1
+        Octokit.stub(:public_events).with(page: 1).and_return raw_response1
       end
 
       it "puts the one matches the event type and falls into time slot into the return" do

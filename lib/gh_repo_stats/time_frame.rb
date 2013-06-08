@@ -10,5 +10,9 @@ module GhRepoStats
     def include?(time)
       from <= time && to >= time
     end
+
+    def later_than?(time)
+      from > time
+    end
   end
 end
