@@ -50,6 +50,12 @@ module GhRepoStats
         expect(subject.id).to eq("1752899736")
       end
     end
+
+    describe "#created_at" do
+      it "returns created_at time" do
+        expect(subject.created_at).to eq(Time.parse("2013-06-07T23:03:52Z"))
+      end
+    end
   end
 end
 
