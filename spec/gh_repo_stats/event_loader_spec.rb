@@ -2,10 +2,17 @@ require "spec_helper"
 
 module GhRepoStats
   describe EventLoader do
-    let(:event_type) { EventType.new name }
-    let(:after) { Time.new(2013, 3, 12, 11, 13, 34, 0) }
-    let(:before) { Time.new(2013, 3, 13, 10, 16, 34, 0) }
-    let(:results) {
+    let(:event_name) { "PushEvent" }
+    let(:event_type) { EventType.new event_name }
+    let(:after_time) { Time.new(2013, 3, 12, 11, 13, 34, 0) }
+    let(:before_time) { Time.new(2013, 3, 13, 10, 16, 34, 0) }
+    let(:time_frame) { TimeFrame.new after_time, before_time }
+
+    let(:raw_response1) {
+      double :raw_response, body: raw_response_body1
+    }
+
+    let(:raw_response_body1) {
       %q|[
         {
             "id": "1752899736",
@@ -78,6 +85,12 @@ module GhRepoStats
     }
 
     describe ".load" do
+      before(:each) do
+        HTTParty.stub(:get).and_return raw_response1
+      end
+
+      it "puts the one matches the event type and falls into time slot into the return" do
+      end
     end
   end
 end
