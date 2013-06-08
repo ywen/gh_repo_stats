@@ -5,7 +5,7 @@ module GhRepoStats
       @name = name
     end
 
-    def matched?(type)
+    def matches?(type)
       type == name
     end
   end

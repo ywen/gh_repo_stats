@@ -50,7 +50,7 @@ module GhRepoStats
                                 ]
                         },
             "public": true,
-            "created_at": "2013-06-07T23:03:52Z"
+            "created_at": "2013-03-12T12:03:52Z"
           },
         {
               "id": "1752899727",
@@ -85,11 +85,14 @@ module GhRepoStats
     }
 
     describe ".load" do
+      let(:result) { described_class.load event_type, time_frame }
       before(:each) do
         HTTParty.stub(:get).and_return raw_response1
       end
 
       it "puts the one matches the event type and falls into time slot into the return" do
+        expect(result.size).to eq(1)
+        expect(result[0].id).to eq('1752899736')
       end
     end
   end

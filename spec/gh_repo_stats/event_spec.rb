@@ -56,6 +56,12 @@ module GhRepoStats
         expect(subject.created_at).to eq(Time.parse("2013-06-07T23:03:52Z"))
       end
     end
+
+    describe "#type" do
+      it "returns type" do
+        expect(subject.type).to eq("PushEvent")
+      end
+    end
   end
 end
 

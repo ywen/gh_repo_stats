@@ -14,5 +14,9 @@ module GhRepoStats
     def created_at
       Time.parse content_hash[:created_at]
     end
+
+    def type
+      content_hash[:type]
+    end
   end
 end
