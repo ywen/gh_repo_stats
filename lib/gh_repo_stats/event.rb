@@ -18,5 +18,19 @@ module GhRepoStats
     def type
       content_hash[:type]
     end
+
+    def repo_id
+      repo_part[:id]
+    end
+
+    def repo_name
+      repo_part[:name]
+    end
+
+    private
+
+    def repo_part
+      content_hash[:repo]
+    end
   end
 end

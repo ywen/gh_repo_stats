@@ -62,6 +62,18 @@ module GhRepoStats
         expect(subject.type).to eq("PushEvent")
       end
     end
+
+    describe "#repo_id" do
+      it "returns reepo's id" do
+        expect(subject.repo_id).to eq(3810347)
+      end
+    end
+
+    describe "#repo_name" do
+      it "returns reepo's name" do
+        expect(subject.repo_name).to eq("stricaud/gvgen")
+      end
+    end
   end
 end
 
