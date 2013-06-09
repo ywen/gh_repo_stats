@@ -135,6 +135,14 @@ module GhRepoStats
         expect(result.size).to eq(1)
         expect(result[0].id).to eq('1752899736')
       end
+
+      context "with empty response" do
+        let(:raw_response1) { [] }
+
+        it "returns empty array" do
+          expect(result.size).to eq(0)
+        end
+      end
     end
   end
 end

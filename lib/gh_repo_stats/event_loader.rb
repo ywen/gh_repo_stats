@@ -7,6 +7,7 @@ module GhRepoStats
         result = []
         (1..Float::INFINITY).each do |page|
           response = Octokit.public_events(page: page)
+          break if response.empty?
           events = response.map{|r| Event.new(r) }
           events.each do |event|
             if time_frame.include?(event.created_at) && event_type.matches?(event.type)
