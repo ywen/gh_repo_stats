@@ -7,7 +7,6 @@ module GhRepoStats
     let(:after_time) { Time.new(2013, 3, 12, 11, 13, 34, 0) }
     let(:before_time) { Time.new(2013, 3, 13, 10, 16, 34, 0) }
     let(:time_frame) { TimeFrame.new after_time, before_time }
-
     let(:raw_response1) {
       [
         {
@@ -45,8 +44,8 @@ module GhRepoStats
                                           }
                                 ]
                         },
-            public: true,
-            created_at: "2013-03-12T12:03:52Z"
+            created_at: "2013-03-13T09:03:50Z",
+            public: true
           },
         {
               id: "1752899727",
@@ -76,7 +75,41 @@ module GhRepoStats
                                   ]
                           },
               public: true,
-              created_at: "2013-06-07T23:03:50Z"
+              created_at: "2013-03-12T12:03:52Z"
+            }]
+    }
+
+    let(:raw_response2) {
+      [
+        {
+              id: "1752899727",
+              type: "PushEvent",
+              actor: {
+                    id: 1620893,
+                    login: "KptainO",
+                    gravatar_id: "59c495b83be2e8d5f3c2a9541bb749b8",
+                    url: "https://api.github.com/users/KptainO",
+                    avatar_url: "https://secure.gravatar.com/avatar/59c495b83be2e8d5f3c2a9541bb749b8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"
+                  },
+              repo: {
+                        id: 9205196,
+                        name: "KptainO/Wiggly",
+                        url: "https://api.github.com/repos/KptainO/Wiggly"
+                      },
+              payload: {
+                            pages: [
+                                    {
+                                              page_name: "Playing with your route",
+                                              title: "Playing with your route",
+                                              summary: nil,
+                                              action: "created",
+                                              sha: "ea19c64fbdf0436e127b78987b15ca2538cd9a1e",
+                                              html_url: "https://github.com/KptainO/Wiggly/wiki/Playing-with-your-route"
+                                            }
+                                  ]
+                          },
+              public: true,
+              created_at: "2013-03-12T10:03:50Z"
             }]
     }
 
@@ -85,6 +118,17 @@ module GhRepoStats
 
       before(:each) do
         Octokit.stub(:public_events).with(page: 1).and_return raw_response1
+        Octokit.stub(:public_events).with(page: 2).and_return raw_response2
+      end
+
+      it "fetches the page 1" do
+        Octokit.should_receive(:public_events).with(page: 1).and_return raw_response1
+        result
+      end
+
+      it "fetches the page 2" do
+        Octokit.should_receive(:public_events).with(page: 2).and_return raw_response2
+        result
       end
 
       it "puts the one matches the event type and falls into time slot into the return" do

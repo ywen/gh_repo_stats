@@ -4,18 +4,16 @@ module GhRepoStats
   class EventLoader
     class << self
       def load(event_type, time_frame)
-        page = 1
         result = []
-        response = Octokit.public_events(page: page)
-        while(has_next?(response, time_frame))
-          response.each do |content_hash|
-            event = Event.new content_hash
+        (1..Float::INFINITY).each do |page|
+          response = Octokit.public_events(page: page)
+          events = response.map{|r| Event.new(r) }
+          events.each do |event|
             if time_frame.include?(event.created_at) && event_type.matches?(event.type)
               result << event
             end
           end
-          page += 1
-          response = Octokit.public_events(page: page)
+          break if no_more_page_needed?(events.last, time_frame)
         end
         result
       end
@@ -24,7 +22,8 @@ module GhRepoStats
 
       # Assuming the events API returns events order by
       # created at time in DESC
-      def has_next?(response, time_frame)
+      def no_more_page_needed?(event, time_frame)
+        time_frame.later_than?(event.created_at)
       end
     end
   end
