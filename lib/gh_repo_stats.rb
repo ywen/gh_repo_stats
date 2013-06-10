@@ -10,6 +10,7 @@ module GhRepoStats
       events = EventLoader.load command_params.event_type, command_params.time_frame
       results = Statistics::Calculator.statistics(events)
       Reporter.report(results, command_params)
+      nil
     end
   end
 end

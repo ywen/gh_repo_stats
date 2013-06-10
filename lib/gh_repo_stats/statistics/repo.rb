@@ -10,6 +10,10 @@ module GhRepoStats
       def count
         events.size
       end
+
+      def repo_name
+        events.first.repo_name
+      end
     end
   end
 end
