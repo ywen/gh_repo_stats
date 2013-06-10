@@ -3,6 +3,11 @@ module GhRepoStats
     module Calculator
       class << self
         def statistics(events)
+          result = []
+          events.group_by(&:repo_id).map do |repo_id, events|
+            result << Repo.new(events)
+          end
+          Collection.new result
         end
       end
     end

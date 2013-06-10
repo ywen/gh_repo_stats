@@ -6,6 +6,10 @@ module GhRepoStats
       def initialize(repos)
         @repos = repos
       end
+
+      def size
+        repos.size
+      end
     end
   end
 end
