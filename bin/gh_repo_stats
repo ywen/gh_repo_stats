@@ -6,6 +6,9 @@ require 'thor'
 class GhRepoStatsBin < Thor
   desc "stats", "Get github repo stats info"
   option :after, desc: "All activities should occur after the DATETIME"
+  option :before, desc: "All activities should occur before the DATETIME"
+  option :n, desc: "The maximum number of repos to display"
+  option :event, desc: "The event type you want to list"
 
   def stats
     GhRepoStats.stats(options)

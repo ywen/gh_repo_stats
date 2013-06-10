@@ -1,7 +1,6 @@
 module GhRepoStats
   class TimeFrame
     attr_reader :from, :to
-    private :from, :to
 
     def initialize(from, to)
       @from, @to = from, to
