@@ -58,5 +58,24 @@ module GhRepoStats
         end
       end
     end
+
+    describe "#count" do
+      let(:result) { subject.count }
+
+      context "when passed in" do
+        let(:options) { { "n" => "12" } }
+
+        it "returns it" do
+          expect(result).to eq(12)
+        end
+      end
+
+      context "when not passed in" do
+
+        it "returns 42 as the default" do
+          expect(result).to eq(42)
+        end
+      end
+    end
   end
 end

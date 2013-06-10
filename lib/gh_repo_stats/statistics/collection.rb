@@ -10,6 +10,10 @@ module GhRepoStats
       def size
         repos.size
       end
+
+      def sorted_results
+        repos.sort {|a, b| b.count <=> a.count }
+      end
     end
   end
 end

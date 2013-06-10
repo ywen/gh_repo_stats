@@ -6,7 +6,9 @@ describe GhRepoStats do
     let(:events) { double :events }
     let(:event_type) { double :event_type }
     let(:time_frame) { double :time_frame }
-    let(:command_params) { double :command_params, event_type: event_type, time_frame: time_frame }
+    let(:command_params) {
+      double :command_params, event_type: event_type, time_frame: time_frame
+    }
     let(:results) { double :results }
 
     before(:each) do
@@ -27,7 +29,7 @@ describe GhRepoStats do
     end
 
     it "outputs results" do
-      GhRepoStats::Reporter.should_receive(:report).with(results)
+      GhRepoStats::Reporter.should_receive(:report).with(results, command_params)
       GhRepoStats.stats options
     end
   end

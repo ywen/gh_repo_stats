@@ -15,6 +15,10 @@ module GhRepoStats
       EventType.new(options["event"] || "PushEvent")
     end
 
+    def count
+      options["n"] ? options["n"].to_i : 42
+    end
+
     private
 
     def to

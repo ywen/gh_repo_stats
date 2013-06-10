@@ -1,7 +1,7 @@
 module GhRepoStats
   class Reporter
     class << self
-      def report(results)
+      def report(results, command_params)
       end
     end
   end
