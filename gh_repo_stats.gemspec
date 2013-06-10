@@ -17,7 +17,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency(%q<octokit>)
   gem.add_development_dependency(%q<rspec>)
   gem.add_development_dependency(%q<rake>)
-  gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'guard-rspec'
   gem.add_development_dependency 'rb-fsevent'
   gem.add_development_dependency 'rb-readline'
