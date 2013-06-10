@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module GhRepoStats
-  describe LoaderParams do
+  describe CommandParams do
     subject { described_class.new options }
 
     let(:options) { {} }

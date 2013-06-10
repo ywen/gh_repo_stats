@@ -4,16 +4,20 @@ describe GhRepoStats do
   describe ".stats" do
     let(:options) { { "option" => "val" } }
     let(:events) { double :events }
+    let(:event_type) { double :event_type }
+    let(:time_frame) { double :time_frame }
+    let(:command_params) { double :command_params, event_type: event_type, time_frame: time_frame }
     let(:results) { double :results }
 
     before(:each) do
-      GhRepoStats::Retriever.stub(:retrieve_with).and_return events
+      GhRepoStats::CommandParams.stub(:new).and_return command_params
+      GhRepoStats::EventLoader.stub(:load).and_return events
       GhRepoStats::Reporter.stub(:report)
       GhRepoStats::Statistics::Calculator.stub(:statistics).and_return results
     end
 
     it "retrieves results" do
-      GhRepoStats::Retriever.should_receive(:retrieve_with).with(options).and_return events
+      GhRepoStats::EventLoader.should_receive(:load).with(event_type, time_frame).and_return events
       GhRepoStats.stats options
     end
 

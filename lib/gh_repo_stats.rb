@@ -6,7 +6,8 @@ end
 module GhRepoStats
   class << self
     def stats(options)
-      events = Retriever.retrieve_with options
+      command_params = CommandParams.new options
+      events = EventLoader.load command_params.event_type, command_params.time_frame
       results = Statistics::Calculator.statistics(events)
       Reporter.report(results)
     end

@@ -1,5 +1,5 @@
 module GhRepoStats
-  class LoaderParams
+  class CommandParams
     attr_reader :options
     private :options
 
