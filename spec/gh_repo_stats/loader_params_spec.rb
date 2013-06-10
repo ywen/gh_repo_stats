@@ -39,5 +39,24 @@ module GhRepoStats
         end
       end
     end
+
+    describe "#event_type" do
+      let(:result) { subject.event_type }
+
+      context "when passed in" do
+        let(:options) { { "event" => "CreateEvent" } }
+
+        it "returns it" do
+          expect(result.name).to eq("CreateEvent")
+        end
+      end
+
+      context "when not passed in" do
+
+        it "returns PushEvent as default" do
+          expect(result.name).to eq("PushEvent")
+        end
+      end
+    end
   end
 end

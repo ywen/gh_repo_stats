@@ -65,7 +65,6 @@ module GhRepoStats
           expect(subject).not_to be_later_than(time)
         end
       end
-
     end
   end
 end

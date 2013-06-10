@@ -11,6 +11,10 @@ module GhRepoStats
       TimeFrame.new from, to
     end
 
+    def event_type
+      EventType.new(options["event"] || "PushEvent")
+    end
+
     private
 
     def to
